@@ -1,0 +1,228 @@
+Starting autoreplier tg bot
+WARNING:aiogram:Updates were skipped successfully.
+sent
+18896
+sent
+18896
+sent
+18896
+sent
+18896
+sent
+18896
+sent
+18896
+sent
+18896
+sent
+18896
+^CWARNING:aiogram:Goodbye!
+(autoreplier_wb) friend@Andreys-MacBook-Pro autoreplier_wb % python bot.py
+Starting autoreplier tg bot
+WARNING:aiogram:Updates were skipped successfully.
+sent
+18896
+sent
+18896
+sent
+18896
+^CWARNING:aiogram:Goodbye!
+(autoreplier_wb) friend@Andreys-MacBook-Pro autoreplier_wb % python bot.py
+Starting autoreplier tg bot
+WARNING:aiogram:Updates were skipped successfully.
+sent
+18904
+^CWARNING:aiogram:Goodbye!
+(autoreplier_wb) friend@Andreys-MacBook-Pro autoreplier_wb % python bot.py
+Starting autoreplier tg bot
+WARNING:aiogram:Updates were skipped successfully.
+sent
+18908
+done
+18908
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-15' coro=<Dispatcher._process_polling_updates() done, defined at /Users/friend/.local/share/virtualenvs/autoreplier_wb-sGRx25hp/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=MessageNotModified('Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message')>
+Traceback (most recent call last):
+  File "/Users/friend/.local/share/virtualenvs/autoreplier_wb-sGRx25hp/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/friend/.local/share/virtualenvs/autoreplier_wb-sGRx25hp/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/friend/.local/share/virtualenvs/autoreplier_wb-sGRx25hp/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/friend/.local/share/virtualenvs/autoreplier_wb-sGRx25hp/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/friend/.local/share/virtualenvs/autoreplier_wb-sGRx25hp/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/friend/Desktop/autoreplier_wb/bot.py", line 31, in send_series
+    await bot.edit_message_reply_markup(GROUP_ID, message_id, reply_markup=kb.done_kb)
+  File "/Users/friend/.local/share/virtualenvs/autoreplier_wb-sGRx25hp/lib/python3.11/site-packages/aiogram/bot/bot.py", line 3252, in edit_message_reply_markup
+    result = await self.request(api.Methods.EDIT_MESSAGE_REPLY_MARKUP, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/friend/.local/share/virtualenvs/autoreplier_wb-sGRx25hp/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/friend/.local/share/virtualenvs/autoreplier_wb-sGRx25hp/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/friend/.local/share/virtualenvs/autoreplier_wb-sGRx25hp/lib/python3.11/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/Users/friend/.local/share/virtualenvs/autoreplier_wb-sGRx25hp/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.MessageNotModified: Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+done
+18908
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-19' coro=<Dispatcher._process_polling_updates() done, defined at /Users/friend/.local/share/virtualenvs/autoreplier_wb-sGRx25hp/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py:407> exception=MessageNotModified('Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message')>
+Traceback (most recent call last):
+  File "/Users/friend/.local/share/virtualenvs/autoreplier_wb-sGRx25hp/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 415, in _process_polling_updates
+    for responses in itertools.chain.from_iterable(await self.process_updates(updates, fast)):
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/friend/.local/share/virtualenvs/autoreplier_wb-sGRx25hp/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 235, in process_updates
+    return await asyncio.gather(*tasks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/friend/.local/share/virtualenvs/autoreplier_wb-sGRx25hp/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/friend/.local/share/virtualenvs/autoreplier_wb-sGRx25hp/lib/python3.11/site-packages/aiogram/dispatcher/dispatcher.py", line 283, in process_update
+    return await self.callback_query_handlers.notify(update.callback_query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/friend/.local/share/virtualenvs/autoreplier_wb-sGRx25hp/lib/python3.11/site-packages/aiogram/dispatcher/handler.py", line 117, in notify
+    response = await handler_obj.handler(*args, **partial_data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/friend/Desktop/autoreplier_wb/bot.py", line 31, in send_series
+    await bot.edit_message_reply_markup(GROUP_ID, message_id, reply_markup=kb.done_kb)
+  File "/Users/friend/.local/share/virtualenvs/autoreplier_wb-sGRx25hp/lib/python3.11/site-packages/aiogram/bot/bot.py", line 3252, in edit_message_reply_markup
+    result = await self.request(api.Methods.EDIT_MESSAGE_REPLY_MARKUP, payload)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/friend/.local/share/virtualenvs/autoreplier_wb-sGRx25hp/lib/python3.11/site-packages/aiogram/bot/base.py", line 236, in request
+    return await api.make_request(await self.get_session(), self.server, self.__token, method, data, files,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/friend/.local/share/virtualenvs/autoreplier_wb-sGRx25hp/lib/python3.11/site-packages/aiogram/bot/api.py", line 140, in make_request
+    return check_result(method, response.content_type, response.status, await response.text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/friend/.local/share/virtualenvs/autoreplier_wb-sGRx25hp/lib/python3.11/site-packages/aiogram/bot/api.py", line 115, in check_result
+    exceptions.BadRequest.detect(description)
+  File "/Users/friend/.local/share/virtualenvs/autoreplier_wb-sGRx25hp/lib/python3.11/site-packages/aiogram/utils/exceptions.py", line 140, in detect
+    raise err(cls.text or description)
+aiogram.utils.exceptions.MessageNotModified: Message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
+sent
+18910
+^CWARNING:aiogram:Goodbye!
+(autoreplier_wb) friend@Andreys-MacBook-Pro autoreplier_wb % python main_replier.py 
+{"message_id": 18915, "from": {"id": 6493105279, "is_bot": true, "first_name": "Демо тестируемый бот", "username": "demo_demotesttebot"}, "chat": {"id": -5239746823, "title": "Отзывы", "type": "group", "all_members_are_administrators": true, "accepted_gift_types": {"unlimited_gifts": false, "limited_gifts": false, "unique_gifts": false, "premium_subscription": false, "gifts_from_channels": false}}, "date": 1767330510, "text": "Начали"}
+{"message_id": 18916, "from": {"id": 6493105279, "is_bot": true, "first_name": "Демо тестируемый бот", "username": "demo_demotesttebot"}, "chat": {"id": -5239746823, "title": "Отзывы", "type": "group", "all_members_are_administrators": true, "accepted_gift_types": {"unlimited_gifts": false, "limited_gifts": false, "unique_gifts": false, "premium_subscription": false, "gifts_from_channels": false}}, "date": 1767330511, "text": "{\"userName\": \"Tasha\", \"rating\": 5, \"text\": \"\", \"pros\": \"\", \"cons\": \"\", \"productName\": \"Блокнот подарок любимой крестной маме\", \"brandName\": \"Подарок крестным CutCat\", \"bables\": [\"внешний вид\", \"качество\"], \"color\": \"Натуральный, красный, бежевый\"}"}
+status: completed
+error: None
+incomplete_details: None
+output_len: 2
+raw repr: '{"answer":"Спасибо, Tasha, за высокую оценку! Приятного использования блокнота."}'
+{"message_id": 18917, "from": {"id": 6493105279, "is_bot": true, "first_name": "Демо тестируемый бот", "username": "demo_demotesttebot"}, "chat": {"id": -5239746823, "title": "Отзывы", "type": "group", "all_members_are_administrators": true, "accepted_gift_types": {"unlimited_gifts": false, "limited_gifts": false, "unique_gifts": false, "premium_subscription": false, "gifts_from_channels": false}}, "date": 1767330518, "text": "Спасибо, Tasha, за высокую оценку! Приятного использования блокнота.", "reply_markup": {"inline_keyboard": [[{"text": "Отправить ✉️", "callback_data": "sent"}]]}}
+{"message_id": 18918, "from": {"id": 6493105279, "is_bot": true, "first_name": "Демо тестируемый бот", "username": "demo_demotesttebot"}, "chat": {"id": -5239746823, "title": "Отзывы", "type": "group", "all_members_are_administrators": true, "accepted_gift_types": {"unlimited_gifts": false, "limited_gifts": false, "unique_gifts": false, "premium_subscription": false, "gifts_from_channels": false}}, "date": 1767330520, "text": "{\"userName\": \"Аделина\", \"rating\": 5, \"text\": \"\", \"pros\": \"\", \"cons\": \"\", \"productName\": \"Ежедневник а5 подарок лучшему классному руководителю\", \"brandName\": \"Учителям CutCat\", \"bables\": [\"внешний вид\", \"качество\", \"удобно пользоваться\"], \"color\": \"Натуральный, белый, красный\"}"}
+status: completed
+error: None
+incomplete_details: None
+output_len: 2
+raw repr: '{"answer":"Спасибо, Аделина! Приятного и удобного пользования ежедневником."}'
+{"message_id": 18919, "from": {"id": 6493105279, "is_bot": true, "first_name": "Демо тестируемый бот", "username": "demo_demotesttebot"}, "chat": {"id": -5239746823, "title": "Отзывы", "type": "group", "all_members_are_administrators": true, "accepted_gift_types": {"unlimited_gifts": false, "limited_gifts": false, "unique_gifts": false, "premium_subscription": false, "gifts_from_channels": false}}, "date": 1767330525, "text": "Спасибо, Аделина! Приятного и удобного пользования ежедневником.", "reply_markup": {"inline_keyboard": [[{"text": "Отправить ✉️", "callback_data": "sent"}]]}}
+{"message_id": 18920, "from": {"id": 6493105279, "is_bot": true, "first_name": "Демо тестируемый бот", "username": "demo_demotesttebot"}, "chat": {"id": -5239746823, "title": "Отзывы", "type": "group", "all_members_are_administrators": true, "accepted_gift_types": {"unlimited_gifts": false, "limited_gifts": false, "unique_gifts": false, "premium_subscription": false, "gifts_from_channels": false}}, "date": 1767330526, "text": "{\"userName\": \"Оксана\", \"rating\": 5, \"text\": \"\", \"pros\": \"\", \"cons\": \"\", \"productName\": \"Ежедневник а5 подарок актеру работнику театра и зрителю\", \"brandName\": \"Профессии CutCat\", \"bables\": [\"внешний вид\", \"качество\"], \"color\": \"Натуральный\"}"}
+status: completed
+error: None
+incomplete_details: None
+output_len: 2
+raw repr: '{"answer":"Спасибо, Оксана! Приятного пользования ежедневником."}'
+{"message_id": 18921, "from": {"id": 6493105279, "is_bot": true, "first_name": "Демо тестируемый бот", "username": "demo_demotesttebot"}, "chat": {"id": -5239746823, "title": "Отзывы", "type": "group", "all_members_are_administrators": true, "accepted_gift_types": {"unlimited_gifts": false, "limited_gifts": false, "unique_gifts": false, "premium_subscription": false, "gifts_from_channels": false}}, "date": 1767330531, "text": "Спасибо, Оксана! Приятного пользования ежедневником.", "reply_markup": {"inline_keyboard": [[{"text": "Отправить ✉️", "callback_data": "sent"}]]}}
+{"message_id": 18922, "from": {"id": 6493105279, "is_bot": true, "first_name": "Демо тестируемый бот", "username": "demo_demotesttebot"}, "chat": {"id": -5239746823, "title": "Отзывы", "type": "group", "all_members_are_administrators": true, "accepted_gift_types": {"unlimited_gifts": false, "limited_gifts": false, "unique_gifts": false, "premium_subscription": false, "gifts_from_channels": false}}, "date": 1767330533, "text": "{\"userName\": \"Екатерина\", \"rating\": 5, \"text\": \"\", \"pros\": \"Милый сувенир\", \"cons\": \"\", \"productName\": \"Подарок крестному папе от крестницы\", \"brandName\": \"Подарок крестным CutCat\", \"bables\": null, \"color\": \"бежевый\"}"}
+status: completed
+error: None
+incomplete_details: None
+output_len: 2
+raw repr: '{"answer":"Екатерина, спасибо за отзыв — очень рады, что милый сувенир вам понравился. Приятного пользования!"}'
+{"message_id": 18923, "from": {"id": 6493105279, "is_bot": true, "first_name": "Демо тестируемый бот", "username": "demo_demotesttebot"}, "chat": {"id": -5239746823, "title": "Отзывы", "type": "group", "all_members_are_administrators": true, "accepted_gift_types": {"unlimited_gifts": false, "limited_gifts": false, "unique_gifts": false, "premium_subscription": false, "gifts_from_channels": false}}, "date": 1767330540, "text": "Екатерина, спасибо за отзыв — очень рады, что милый сувенир вам понравился. Приятного пользования!", "reply_markup": {"inline_keyboard": [[{"text": "Отправить ✉️", "callback_data": "sent"}]]}}
+{"message_id": 18924, "from": {"id": 6493105279, "is_bot": true, "first_name": "Демо тестируемый бот", "username": "demo_demotesttebot"}, "chat": {"id": -5239746823, "title": "Отзывы", "type": "group", "all_members_are_administrators": true, "accepted_gift_types": {"unlimited_gifts": false, "limited_gifts": false, "unique_gifts": false, "premium_subscription": false, "gifts_from_channels": false}}, "date": 1767330541, "text": "{\"userName\": \"Надежда\", \"rating\": 5, \"text\": \"Дороговато конечно. Ну эмоции того стоят.\", \"pros\": \"\", \"cons\": \"\", \"productName\": \"Открытка о беременности, ты станешь бабушкой и дедушкой\", \"brandName\": \"Сообщение о беременности CutCat\", \"bables\": null, \"color\": \"желтый\"}"}
+status: completed
+error: None
+incomplete_details: None
+output_len: 2
+raw repr: '{"answer":"Спасибо за отзыв, Надежда. Нам жаль, что цена показалась высокой — опишите, пожалуйста, что именно вас не устроило в разделе «Вопросы к товару» или напишите в поддержку Wildberries, и мы постараемся помочь."}'
+{"message_id": 18925, "from": {"id": 6493105279, "is_bot": true, "first_name": "Демо тестируемый бот", "username": "demo_demotesttebot"}, "chat": {"id": -5239746823, "title": "Отзывы", "type": "group", "all_members_are_administrators": true, "accepted_gift_types": {"unlimited_gifts": false, "limited_gifts": false, "unique_gifts": false, "premium_subscription": false, "gifts_from_channels": false}}, "date": 1767330553, "text": "Спасибо за отзыв, Надежда. Нам жаль, что цена показалась высокой — опишите, пожалуйста, что именно вас не устроило в разделе «Вопросы к товару» или напишите в поддержку Wildberries, и мы постараемся помочь.", "reply_markup": {"inline_keyboard": [[{"text": "Отправить ✉️", "callback_data": "sent"}]]}}
+{"message_id": 18926, "from": {"id": 6493105279, "is_bot": true, "first_name": "Демо тестируемый бот", "username": "demo_demotesttebot"}, "chat": {"id": -5239746823, "title": "Отзывы", "type": "group", "all_members_are_administrators": true, "accepted_gift_types": {"unlimited_gifts": false, "limited_gifts": false, "unique_gifts": false, "premium_subscription": false, "gifts_from_channels": false}}, "date": 1767330554, "text": "{\"userName\": \"Юлия\", \"rating\": 5, \"text\": \"\", \"pros\": \"\", \"cons\": \"\", \"productName\": \"Ежедневник подарок тренеру по футболу\", \"brandName\": \"Подарок тренеру CutCat\", \"bables\": [\"внешний вид\"], \"color\": \"Натуральный, белый, красный\"}"}
+status: completed
+error: None
+incomplete_details: None
+output_len: 2
+raw repr: '{"answer":"Спасибо, Юлия, за высокую оценку! Приятного пользования ежедневником."}'
+{"message_id": 18927, "from": {"id": 6493105279, "is_bot": true, "first_name": "Демо тестируемый бот", "username": "demo_demotesttebot"}, "chat": {"id": -5239746823, "title": "Отзывы", "type": "group", "all_members_are_administrators": true, "accepted_gift_types": {"unlimited_gifts": false, "limited_gifts": false, "unique_gifts": false, "premium_subscription": false, "gifts_from_channels": false}}, "date": 1767330559, "text": "Спасибо, Юлия, за высокую оценку! Приятного пользования ежедневником.", "reply_markup": {"inline_keyboard": [[{"text": "Отправить ✉️", "callback_data": "sent"}]]}}
+{"message_id": 18928, "from": {"id": 6493105279, "is_bot": true, "first_name": "Демо тестируемый бот", "username": "demo_demotesttebot"}, "chat": {"id": -5239746823, "title": "Отзывы", "type": "group", "all_members_are_administrators": true, "accepted_gift_types": {"unlimited_gifts": false, "limited_gifts": false, "unique_gifts": false, "premium_subscription": false, "gifts_from_channels": false}}, "date": 1767330560, "text": "{\"userName\": \"\", \"rating\": 5, \"text\": \"\", \"pros\": \"\", \"cons\": \"\", \"productName\": \"Ежедневник недатированный а5 для лучшего мастера маникюра\", \"brandName\": \"Профессии CutCat\", \"bables\": [\"внешний вид\", \"качество\", \"удобно пользоваться\"], \"color\": \"Натуральный, белый, красный\"}"}
+status: completed
+error: None
+incomplete_details: None
+output_len: 2
+raw repr: '{"answer":"Большое спасибо за высокую оценку! Приятного пользования ежедневником."}'
+{"message_id": 18929, "from": {"id": 6493105279, "is_bot": true, "first_name": "Демо тестируемый бот", "username": "demo_demotesttebot"}, "chat": {"id": -5239746823, "title": "Отзывы", "type": "group", "all_members_are_administrators": true, "accepted_gift_types": {"unlimited_gifts": false, "limited_gifts": false, "unique_gifts": false, "premium_subscription": false, "gifts_from_channels": false}}, "date": 1767330567, "text": "Большое спасибо за высокую оценку! Приятного пользования ежедневником.", "reply_markup": {"inline_keyboard": [[{"text": "Отправить ✉️", "callback_data": "sent"}]]}}
+{"message_id": 18930, "from": {"id": 6493105279, "is_bot": true, "first_name": "Демо тестируемый бот", "username": "demo_demotesttebot"}, "chat": {"id": -5239746823, "title": "Отзывы", "type": "group", "all_members_are_administrators": true, "accepted_gift_types": {"unlimited_gifts": false, "limited_gifts": false, "unique_gifts": false, "premium_subscription": false, "gifts_from_channels": false}}, "date": 1767330570, "text": "{\"userName\": \"Марина\", \"rating\": 5, \"text\": \"Рекомендую на подарок.\", \"pros\": \"Все понравилось.\", \"cons\": \"Все так\", \"productName\": \"Ежедневник недатированный а5 подарочный электрику -лз\", \"brandName\": \"CutCat\", \"bables\": null, \"color\": \"Черный матовый\"}"}
+status: completed
+error: None
+incomplete_details: None
+output_len: 2
+raw repr: '{"answer":"Марина, спасибо за рекомендацию — рады, что ежедневник подошёл для подарка. Если что-то оказалось не так или есть замечания, извините за неудобства; пожалуйста, опишите проблему в разделе «Вопросы продавцу» на Wildberries."}'
+{"message_id": 18931, "from": {"id": 6493105279, "is_bot": true, "first_name": "Демо тестируемый бот", "username": "demo_demotesttebot"}, "chat": {"id": -5239746823, "title": "Отзывы", "type": "group", "all_members_are_administrators": true, "accepted_gift_types": {"unlimited_gifts": false, "limited_gifts": false, "unique_gifts": false, "premium_subscription": false, "gifts_from_channels": false}}, "date": 1767330584, "text": "Марина, спасибо за рекомендацию — рады, что ежедневник подошёл для подарка. Если что-то оказалось не так или есть замечания, извините за неудобства; пожалуйста, опишите проблему в разделе «Вопросы продавцу» на Wildberries.", "reply_markup": {"inline_keyboard": [[{"text": "Отправить ✉️", "callback_data": "sent"}]]}}
+{"message_id": 18932, "from": {"id": 6493105279, "is_bot": true, "first_name": "Демо тестируемый бот", "username": "demo_demotesttebot"}, "chat": {"id": -5239746823, "title": "Отзывы", "type": "group", "all_members_are_administrators": true, "accepted_gift_types": {"unlimited_gifts": false, "limited_gifts": false, "unique_gifts": false, "premium_subscription": false, "gifts_from_channels": false}}, "date": 1767330585, "text": "{\"userName\": \"Алла\", \"rating\": 5, \"text\": \"\", \"pros\": \"Нужная штучка , кому надо напоминалка.\", \"cons\": \"\", \"productName\": \"Магнитная доска на холодильник А4 с маркером вертикальная\", \"brandName\": \"CutCat\", \"bables\": [\"внешний вид\", \"качество\"], \"color\": \"Белый\"}"}
+status: completed
+error: None
+incomplete_details: None
+output_len: 2
+raw repr: '{"answer":"Спасибо, Алла! Рады, что магнитная доска вам пригодилась — приятного пользования."}'
+{"message_id": 18933, "from": {"id": 6493105279, "is_bot": true, "first_name": "Демо тестируемый бот", "username": "demo_demotesttebot"}, "chat": {"id": -5239746823, "title": "Отзывы", "type": "group", "all_members_are_administrators": true, "accepted_gift_types": {"unlimited_gifts": false, "limited_gifts": false, "unique_gifts": false, "premium_subscription": false, "gifts_from_channels": false}}, "date": 1767330589, "text": "Спасибо, Алла! Рады, что магнитная доска вам пригодилась — приятного пользования.", "reply_markup": {"inline_keyboard": [[{"text": "Отправить ✉️", "callback_data": "sent"}]]}}
+{"message_id": 18934, "from": {"id": 6493105279, "is_bot": true, "first_name": "Демо тестируемый бот", "username": "demo_demotesttebot"}, "chat": {"id": -5239746823, "title": "Отзывы", "type": "group", "all_members_are_administrators": true, "accepted_gift_types": {"unlimited_gifts": false, "limited_gifts": false, "unique_gifts": false, "premium_subscription": false, "gifts_from_channels": false}}, "date": 1767330590, "text": "{\"userName\": \"Юлия\", \"rating\": 5, \"text\": \"Эффективный\", \"pros\": \"\", \"cons\": \"\", \"productName\": \"Магнитный планер А3 на холодильник с маркером\", \"brandName\": \"CutCat\", \"bables\": [\"качество\"], \"color\": \"белый\"}"}
+status: completed
+error: None
+incomplete_details: None
+output_len: 2
+raw repr: '{"answer":"Юлия, спасибо за ваш отзыв! Рады, что магнитный планер CutCat оказался эффективным — желаем удобного и приятного использования."}'
+{"message_id": 18935, "from": {"id": 6493105279, "is_bot": true, "first_name": "Демо тестируемый бот", "username": "demo_demotesttebot"}, "chat": {"id": -5239746823, "title": "Отзывы", "type": "group", "all_members_are_administrators": true, "accepted_gift_types": {"unlimited_gifts": false, "limited_gifts": false, "unique_gifts": false, "premium_subscription": false, "gifts_from_channels": false}}, "date": 1767330610, "text": "Юлия, спасибо за ваш отзыв! Рады, что магнитный планер CutCat оказался эффективным — желаем удобного и приятного использования.", "reply_markup": {"inline_keyboard": [[{"text": "Отправить ✉️", "callback_data": "sent"}]]}}
+{"message_id": 18936, "from": {"id": 6493105279, "is_bot": true, "first_name": "Демо тестируемый бот", "username": "demo_demotesttebot"}, "chat": {"id": -5239746823, "title": "Отзывы", "type": "group", "all_members_are_administrators": true, "accepted_gift_types": {"unlimited_gifts": false, "limited_gifts": false, "unique_gifts": false, "premium_subscription": false, "gifts_from_channels": false}}, "date": 1767330612, "text": "{\"userName\": \"Сиратулло\", \"rating\": 1, \"text\": \"\", \"pros\": \"\", \"cons\": \"\", \"productName\": \"Подставка для Корана деревянная\", \"brandName\": \"CutCat\", \"bables\": [\"плохое качество\"], \"color\": \"Натуральный, бежевый, черный матовый, золотистый\"}"}
+status: completed
+error: None
+incomplete_details: None
+output_len: 2
+raw repr: '{"answer":"Извините за доставленные неудобства. Пожалуйста, опишите, в чём именно проявилось плохое качество — оставьте подробности в разделе \\"Вопросы продавцу\\" на Wildberries или свяжитесь со службой поддержки, чтобы мы могли уточнить ситуацию."}'
+{"message_id": 18937, "from": {"id": 6493105279, "is_bot": true, "first_name": "Демо тестируемый бот", "username": "demo_demotesttebot"}, "chat": {"id": -5239746823, "title": "Отзывы", "type": "group", "all_members_are_administrators": true, "accepted_gift_types": {"unlimited_gifts": false, "limited_gifts": false, "unique_gifts": false, "premium_subscription": false, "gifts_from_channels": false}}, "date": 1767330620, "text": "Извините за доставленные неудобства. Пожалуйста, опишите, в чём именно проявилось плохое качество — оставьте подробности в разделе \"Вопросы продавцу\" на Wildberries или свяжитесь со службой поддержки, чтобы мы могли уточнить ситуацию.", "reply_markup": {"inline_keyboard": [[{"text": "Отправить ✉️", "callback_data": "sent"}]]}}
+{"message_id": 18938, "from": {"id": 6493105279, "is_bot": true, "first_name": "Демо тестируемый бот", "username": "demo_demotesttebot"}, "chat": {"id": -5239746823, "title": "Отзывы", "type": "group", "all_members_are_administrators": true, "accepted_gift_types": {"unlimited_gifts": false, "limited_gifts": false, "unique_gifts": false, "premium_subscription": false, "gifts_from_channels": false}}, "date": 1767330621, "text": "{\"userName\": \"Светлана\", \"rating\": 5, \"text\": \"\", \"pros\": \"\", \"cons\": \"\", \"productName\": \"Магнитный планер на холодильник доска А3\", \"brandName\": \"CutCat\", \"bables\": [\"внешний вид\", \"качество\"], \"color\": \"Белый\"}"}
+status: completed
+error: None
+incomplete_details: None
+output_len: 2
+raw repr: '{"answer":"Спасибо, Светлана! Приятного и удобного пользования магнитным планером CutCat на холодильник."}'
+{"message_id": 18939, "from": {"id": 6493105279, "is_bot": true, "first_name": "Демо тестируемый бот", "username": "demo_demotesttebot"}, "chat": {"id": -5239746823, "title": "Отзывы", "type": "group", "all_members_are_administrators": true, "accepted_gift_types": {"unlimited_gifts": false, "limited_gifts": false, "unique_gifts": false, "premium_subscription": false, "gifts_from_channels": false}}, "date": 1767330627, "text": "Спасибо, Светлана! Приятного и удобного пользования магнитным планером CutCat на холодильник.", "reply_markup": {"inline_keyboard": [[{"text": "Отправить ✉️", "callback_data": "sent"}]]}}
+{"message_id": 18940, "from": {"id": 6493105279, "is_bot": true, "first_name": "Демо тестируемый бот", "username": "demo_demotesttebot"}, "chat": {"id": -5239746823, "title": "Отзывы", "type": "group", "all_members_are_administrators": true, "accepted_gift_types": {"unlimited_gifts": false, "limited_gifts": false, "unique_gifts": false, "premium_subscription": false, "gifts_from_channels": false}}, "date": 1767330629, "text": "{\"userName\": \"Люба\", \"rating\": 5, \"text\": \"\", \"pros\": \"\", \"cons\": \"\", \"productName\": \"Ежедневник недатированный а5 звездные войны Дарт Вейдер\", \"brandName\": \"CutCat\", \"bables\": [\"внешний вид\"], \"color\": \"Черный матовый\"}"}
+status: completed
+error: None
+incomplete_details: None
+output_len: 2
+raw repr: '{"answer":"Спасибо, Люба! Приятного пользования вашим ежедневником."}'
+{"message_id": 18941, "from": {"id": 6493105279, "is_bot": true, "first_name": "Демо тестируемый бот", "username": "demo_demotesttebot"}, "chat": {"id": -5239746823, "title": "Отзывы", "type": "group", "all_members_are_administrators": true, "accepted_gift_types": {"unlimited_gifts": false, "limited_gifts": false, "unique_gifts": false, "premium_subscription": false, "gifts_from_channels": false}}, "date": 1767330635, "text": "Спасибо, Люба! Приятного пользования вашим ежедневником.", "reply_markup": {"inline_keyboard": [[{"text": "Отправить ✉️", "callback_data": "sent"}]]}}
+{"message_id": 18942, "from": {"id": 6493105279, "is_bot": true, "first_name": "Демо тестируемый бот", "username": "demo_demotesttebot"}, "chat": {"id": -5239746823, "title": "Отзывы", "type": "group", "all_members_are_administrators": true, "accepted_gift_types": {"unlimited_gifts": false, "limited_gifts": false, "unique_gifts": false, "premium_subscription": false, "gifts_from_channels": false}}, "date": 1767330636, "text": "{\"userName\": \"Коригова Залина\", \"rating\": 5, \"text\": \"\", \"pros\": \"\", \"cons\": \"\", \"productName\": \"Ежедневник недатированный а5 с ручкой ветеринару\", \"brandName\": \"CutCat\", \"bables\": [\"внешний вид\", \"качество\", \"удобно пользоваться\"], \"color\": \"Черный матовый\"}"}
+status: completed
+error: None
+incomplete_details: None
+output_len: 2
+raw repr: '{"answer":"Спасибо, Коригова Залина! Благодарим за оценку — приятного и удобного пользования ежедневником CutCat."}'
+{"message_id": 18943, "from": {"id": 6493105279, "is_bot": true, "first_name": "Демо тестируемый бот", "username": "demo_demotesttebot"}, "chat": {"id": -5239746823, "title": "Отзывы", "type": "group", "all_members_are_administrators": true, "accepted_gift_types": {"unlimited_gifts": false, "limited_gifts": false, "unique_gifts": false, "premium_subscription": false, "gifts_from_channels": false}}, "date": 1767330640, "text": "Спасибо, Коригова Залина! Благодарим за оценку — приятного и удобного пользования ежедневником CutCat.", "reply_markup": {"inline_keyboard": [[{"text": "Отправить ✉️", "callback_data": "sent"}]]}}
+{"message_id": 18944, "from": {"id": 6493105279, "is_bot": true, "first_name": "Демо тестируемый бот", "username": "demo_demotesttebot"}, "chat": {"id": -5239746823, "title": "Отзывы", "type": "group", "all_members_are_administrators": true, "accepted_gift_types": {"unlimited_gifts": false, "limited_gifts": false, "unique_gifts": false, "premium_subscription": false, "gifts_from_channels": false}}, "date": 1767330642, "text": "{\"userName\": \"Нелли\", \"rating\": 5, \"text\": \"Спасибо продавцу за быстрое урегулирование ситуации, приятно иметь дело с добросовестным продавцом, ошибки ни где не исключены к сожалению тем более в предверии праздника. Спасибо за ответ\", \"pros\": \"\", \"cons\": \"\", \"productName\": \"Фотоальбом семейный альбом для фото в подарок\", \"brandName\": \"CutCat\", \"bables\": null, \"color\": \"Черный матовый, белый, красный · 80 фото, 40 фото, 100 фото\"}"}
+status: completed
+error: None
+incomplete_details: None
+output_len: 2
+raw repr: '{"answer":"Нелли, спасибо за тёплый отзыв и понимание. Приятного пользования фотоальбомом!"}'
+{"message_id": 18945, "from": {"id": 6493105279, "is_bot": true, "first_name": "Демо тестируемый бот", "username": "demo_demotesttebot"}, "chat": {"id": -5239746823, "title": "Отзывы", "type": "group", "all_members_are_administrators": true, "accepted_gift_types": {"unlimited_gifts": false, "limited_gifts": false, "unique_gifts": false, "premium_subscription": false, "gifts_from_channels": false}}, "date": 1767330647, "text": "Нелли, спасибо за тёплый отзыв и понимание. Приятного пользования фотоальбомом!", "reply_markup": {"inline_keyboard": [[{"text": "Отправить ✉️", "callback_data": "sent"}]]}}
+^CTraceback (most recent call last):
+  File "/Users/friend/Desktop/autoreplier_wb/main_replier.py", line 60, in <module>
+    time.sleep(FEEDBACK_TIMEOUT)
+KeyboardInterrupt
+
+(autoreplier_wb) friend@Andreys-MacBook-Pro autoreplier_wb % 

@@ -1,0 +1,11 @@
+config.py
+config.json
+Pipfile
+Pipfile.lock
+__pycache__
+test.py
+nohup.out
+readme_private.txt
+cfg_*.tmp
+config.json.lock
+key.json
