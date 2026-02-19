@@ -90,6 +90,10 @@ async def send_series(callback: types.CallbackQuery, state: FSMContext):
 async def send_welcome(message: types.Message):
     await message.answer_document(types.InputFile("nohup.out"))
 
+@dp.message_handler(lambda message: str(message.from_user.id) in config_io.get_value('ADMINS'), commands=['logss'], state="*")
+async def send_welcome(message: types.Message):
+    await message.answer_document(types.InputFile("out.log"))
+
 
 
 @dp.callback_query_handler(state='*')

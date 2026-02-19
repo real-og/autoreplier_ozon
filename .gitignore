@@ -10,3 +10,5 @@ cfg_*.tmp
 config.json.lock
 key.json
 test.json
+log.txt
+out.log
