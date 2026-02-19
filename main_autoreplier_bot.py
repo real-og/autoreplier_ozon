@@ -4,5 +4,5 @@ from handlers import *
 
 
 if __name__ == '__main__':
-    print("Starting autoreplier bot")
+    print("Starting autoreplier OZON bot")
     executor.start_polling(dp, skip_updates=True)

@@ -9,3 +9,4 @@ readme_private.txt
 cfg_*.tmp
 config.json.lock
 key.json
+test.json

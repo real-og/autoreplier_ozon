@@ -4,8 +4,8 @@ from aiogram.dispatcher import FSMContext
 from aiogram.types import ReplyKeyboardRemove
 import traceback
 from states import State
+import ozon_api
 import keyboards as kb
-import wb_api
 import redis_db
 import texts
 import gpt_generator
@@ -15,10 +15,10 @@ from loader import dp, bot
 import config_io
 import utils
 import sys
-if sys.argv[1] == "btl":
-    import google_sheets_btl as google_sheets
-elif sys.argv[1] == "rastr":
-    import google_sheets_rastr as google_sheets
+# if sys.argv[1] == "btl":
+#     import google_sheets_btl as google_sheets
+# elif sys.argv[1] == "rastr":
+#     import google_sheets_rastr as google_sheets
 
 
 @dp.message_handler(lambda message: str(message.from_user.id) in config_io.get_value('ADMINS'), commands=['start'], state="*")
@@ -32,9 +32,8 @@ async def send_welcome(message: types.Message):
     await message.answer(texts.diagnos_wait)
     proxy_check = diagnostics.check_proxy(config_io.get_value('PROXY'))
     openai_check = diagnostics.check_openai_via_proxy(config_io.get_value('PROXY'), config_io.get_value('GPT_KEY'))
-    wb_ooo_check = diagnostics.check_wb(config_io.get_value('WB_TOKEN_OOO'))
-    wb_ip_check = diagnostics.check_wb(config_io.get_value('WB_TOKEN_IP'))
-    await message.answer(texts.diagnos_result(proxy_check, openai_check, [wb_ooo_check, wb_ip_check]))
+    ozon_check = diagnostics.check_ozon(config_io.get_value('OZON_TOKEN'))
+    await message.answer(texts.diagnos_result(proxy_check, openai_check, [ozon_check]))
 
 
     
@@ -66,6 +65,7 @@ async def send_series(callback: types.CallbackQuery, state: FSMContext):
     if callback.data == 'menu':
         await callback.message.answer(texts.back_to_menu, reply_markup=ReplyKeyboardRemove())
         await state.reset_state(with_data=False)
+        await bot.answer_callback_query(callback.id)
         return
 
     tapped_num = int(callback.data)
@@ -104,10 +104,9 @@ async def send_series(callback: types.CallbackQuery):
             item_to_ans = item
             break
 
-    if item_to_ans['account'] == 'OOO':
-        auth = config_io.get_value('WB_TOKEN_OOO')
-    elif item_to_ans['account'] == 'IP':
-        auth = config_io.get_value('WB_TOKEN_IP')
+
+    auth = config_io.get_value('OZON_TOKEN')
+
 
     if tapped == 'sent':
 
@@ -122,8 +121,8 @@ async def send_series(callback: types.CallbackQuery):
         
 
         # already answered
-        wb_feedback = wb_api.get_feedback_by_id(auth, item_to_ans['feedback_id'])
-        if wb_feedback.json()['data']['answer'] is not None:
+        ozon_feedback = ozon_api.get_feedback_info(auth, item_to_ans['feedback_id'])
+        if ozon_feedback.json()['status'] == 'PROCESSED':
             try:
                 await bot.edit_message_reply_markup(config_io.get_value('GROUP_ID'), message_id, reply_markup=kb.done_by_hand)
             except Exception as e:
@@ -132,24 +131,24 @@ async def send_series(callback: types.CallbackQuery):
             return
         
 
-        res = wb_api.answer_feedback(auth, item_to_ans['feedback_id'], callback.message.text)
-        print(res)
+        res = ozon_api.answer_feedback(auth, item_to_ans['feedback_id'], callback.message.text)
         try:
             await bot.edit_message_reply_markup(config_io.get_value('GROUP_ID'), message_id, reply_markup=kb.done_kb)
         except Exception as e:
             print('Ошибка при изменении кнопки')
     elif tapped == 'regenerate':
         await bot.answer_callback_query(callback.id, text='Подождите')
-        wb_feedback = wb_api.get_feedback_by_id(auth, item_to_ans['feedback_id']).json().get('data')
-        parsed_feedback = utils.parse_feedback(wb_feedback)
+        ozon_feedback = ozon_api.get_feedback_info(auth, item_to_ans['feedback_id']).json()
+        product_info = ozon_api.get_product_info(auth, ozon_feedback['sku']).json()['items'][0]
+        parsed_feedback = utils.parse_feedback(ozon_feedback, product_info)
 
-        if sys.argv[1] == "btl":
-            recs = google_sheets.get_recommendations(wb_feedback['productDetails']['supplierArticle'])
-        elif sys.argv[1] == "rastr":
-            recs = google_sheets.get_recommendations(wb_feedback['productDetails']['nmId'])
-        if recs:
-            recs = random.choice(recs)
-        reply_gpt, total_used_tokens = gpt_generator.get_reply(parsed_feedback, recs)
+        # if sys.argv[1] == "btl":
+        #     recs = google_sheets.get_recommendations(wb_feedback['productDetails']['supplierArticle'])
+        # elif sys.argv[1] == "rastr":
+        #     recs = google_sheets.get_recommendations(wb_feedback['productDetails']['nmId'])
+        # if recs:
+        #     recs = random.choice(recs)
+        reply_gpt, total_used_tokens = gpt_generator.get_reply(parsed_feedback)
 
         await bot.edit_message_text(reply_gpt + f'\n\n<i>Суммарно использовано {total_used_tokens}</i>', config_io.get_value('GROUP_ID'), message_id, reply_markup=kb.to_send_kb)
     try:

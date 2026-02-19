@@ -1,4 +1,3 @@
-import os
 import httpx
 from openai import OpenAI
 import json
@@ -60,7 +59,4 @@ def get_reply(payload: dict | str, recommended = None) -> str:
     data = json.loads(resp.output_text)
     return data["answer"].strip(), total_used
 
-
-if __name__ == '__main__':
-    print(get_reply('класс'))
     

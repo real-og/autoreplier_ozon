@@ -1,30 +1,21 @@
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
+import re
 
 
-# for cahtGPT
-def parse_feedback(feedback_item: dict):
+#for gpt
+def parse_feedback(feedback_item: dict, product_info: dict):
     return {
-        "userName": feedback_item.get("userName", ""),
-        "rating": feedback_item.get("productValuation"),
+        "rating": feedback_item.get("rating"),
         "text": feedback_item.get("text", ""),
-        "pros": feedback_item.get("pros", ""),
-        "cons": feedback_item.get("cons", ""),
-        "productName": (feedback_item.get("productDetails") or {}).get("productName", ""),
-        "brandName": (feedback_item.get("productDetails") or {}).get("brandName", ""),
-        "bables": feedback_item.get("bables", []),
-        "color": feedback_item.get("color", ""),
+        "productName": product_info.get('name', ""),
     }
 
 
 # from wb to tg
-def compose_message(feedback: dict) -> str:
-    pd = feedback.get("productDetails") or {}
-
+def compose_message(feedback: dict, product_info: dict) -> str:
     fb_id = feedback.get("id", "-")
-    user = (feedback.get("userName") or "").strip() or "Без имени"
-    rating = feedback.get("productValuation", "-")
-    created = feedback.get("createdDate")
-
+    rating = feedback.get("rating", "-")
+    created = feedback.get("published_at")
     created_str = "—"
     if created:
         try:
@@ -33,27 +24,11 @@ def compose_message(feedback: dict) -> str:
         except Exception:
             created_str = created
 
-    product_name = pd.get("productName", "—")
-    brand = pd.get("brandName", "—")
-    supplier_article = pd.get("supplierArticle", "—")
-    color = feedback.get("color") or "—"
-    subject = feedback.get("subjectName") or pd.get("subjectName") or "—"
-
+    product_name = product_info.get("name", "—")
+    supplier_article = product_info.get("offer_id", "—")
     text = (feedback.get("text") or "").strip()
-    pros = (feedback.get("pros") or "").strip()
-    cons = (feedback.get("cons") or "").strip()
-
-    bables = feedback.get("bables") or []
-    tags = ", ".join(bables) if isinstance(bables, list) and bables else "—"
-
-    photos = feedback.get("photoLinks") or []
-    photos_count = len(photos) if isinstance(photos, list) else 0
-
-    answer = feedback.get("answer")
-
-    article_for_customer = pd.get('nmId')
-
-    answered = "✅ Есть ответ" if answer else "❌ Нет ответа"
+    photos_count = feedback.get("photos_amount", '0')
+    article_for_customer = feedback.get('sku')
 
     if int(rating) == 5:
         symbol_for_rate = '✅'
@@ -61,7 +36,6 @@ def compose_message(feedback: dict) -> str:
         symbol_for_rate = '⚠️'
     else:
         symbol_for_rate = '💀'
-
 
     parts = [ 
         f"Оценка: <b>{rating}</b>{symbol_for_rate}", 
@@ -73,21 +47,14 @@ def compose_message(feedback: dict) -> str:
         f"Артикул продавца: <b>{supplier_article}</b>",
         f"Карточка: <b>{article_for_customer}</b>",
         "",
-        f"Покупатель: <b>{user}</b>",
         f"Фото: <b>{photos_count}</b>", 
         "",
-        f"Теги: <b>{tags}</b>",   
-        ""   
     ]
 
     if text:
         parts += [f"Текст: <b>{text}</b>"]
-    if pros:
-        parts += [f"Плюсы: <b>{pros}</b>"]
-    if cons:
-        parts += [f"Минусы: <b>{cons}</b>"]
 
-    if not text and not pros and not cons:
+    if not text:
         parts += ["Отзыв без текста"]
 
     parts += ["", f"ID: <i>{fb_id}</i>"]
@@ -104,8 +71,6 @@ def short_tail(s: str, tail: int = 6) -> str:
     return "..." + s[-tail:]
 
 
-import re
-
 def strip_usage_tail(text: str) -> str:
     return re.sub(
         r'\n*\s*(?:всего|суммарно)\s+использовано.*$',
@@ -117,21 +82,39 @@ def strip_usage_tail(text: str) -> str:
 
 def is_valid_proxy(proxy: str) -> bool:
     pattern = re.compile(
-        r'^http://'                      # протокол
-        r'([a-zA-Z0-9._-]+)'              # логин
+        r'^http://'                     
+        r'([a-zA-Z0-9._-]+)'              
         r':'                              
-        r'([a-zA-Z0-9._-]+)'              # пароль
+        r'([a-zA-Z0-9._-]+)'             
         r'@'
         r'('
-            r'(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.'  # 1 октет
-            r'(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.'  # 2
-            r'(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.'  # 3
-            r'(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)'    # 4
+            r'(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.'  
+            r'(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.'  
+            r'(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)\.'  
+            r'(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)'    
         r')'
         r':'
-        r'([1-9]\d{0,4})$'                # порт
+        r'([1-9]\d{0,4})$'                
     )
 
     match = pattern.match(proxy)
     if not match:
         return False
+    
+
+def is_fresher_than_days(ts: str, days: int = 30) -> bool:
+
+    if not isinstance(ts, str) or not ts:
+        return False
+
+    try:
+        dt = datetime.fromisoformat(ts.replace("Z", "+00:00"))
+
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+
+    except ValueError:
+        return False
+
+    now = datetime.now(timezone.utc)
+    return (now - dt) < timedelta(days=days)

@@ -5,8 +5,8 @@ import time
 
 redis_client = redis.Redis(host="127.0.0.1", port=6379, decode_responses=True)
 
-key = "wb_feedbacks"
-automod_key = 'wb_automod_rates'
+key = "ozon_feedbacks"
+automod_key = 'ozon_automod_rates'
 
 
 def add_redis(item: dict):

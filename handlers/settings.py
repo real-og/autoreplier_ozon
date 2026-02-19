@@ -13,8 +13,7 @@ from loader import dp
 @dp.message_handler(lambda message: str(message.from_user.id) in config_io.get_value('ADMINS'),commands=['get_settings'], state="*")
 async def send_welcome(message: types.Message):
     to_answer = f"""<b>Нынешняя конфигурация настроек</b>\n\n
-Токен ООО: {utils.short_tail(config_io.get_value('WB_TOKEN_OOO'))}
-Токен ИП: {utils.short_tail(config_io.get_value('WB_TOKEN_IP'))}
+Токен OZON: {utils.short_tail(config_io.get_value('OZON_TOKEN'))}
 Прокси: {utils.short_tail(config_io.get_value('PROXY'))}
 Токен openAI: {utils.short_tail(config_io.get_value('GPT_KEY'))}
 Id группы: {utils.short_tail(config_io.get_value('GROUP_ID'))}\n\n"""
@@ -81,37 +80,19 @@ async def send_welcome(message: types.Message, state: FSMContext):
     await state.reset_state(with_data=False)
 
 
-@dp.message_handler(lambda message: str(message.from_user.id) in config_io.get_value('ADMINS'),commands=['set_wb_ooo'], state="*")
+@dp.message_handler(lambda message: str(message.from_user.id) in config_io.get_value('ADMINS'), commands=['set_ozon'], state="*")
 async def send_welcome(message: types.Message):
-    await message.answer(f"Токен вб ООО: {utils.short_tail(config_io.get_value('WB_TOKEN_OOO'))}")
+    await message.answer(f"Токен ozon: {utils.short_tail(config_io.get_value('OZON_TOKEN'))}")
     await message.answer(texts.change_setting, reply_markup=kb.cancel_kb)
-    await State.changing_wb_ooo.set()
+    await State.changing_ozon.set()
 
-@dp.message_handler(lambda message: str(message.from_user.id) in config_io.get_value('ADMINS'),state=State.changing_wb_ooo)
+@dp.message_handler(lambda message: str(message.from_user.id) in config_io.get_value('ADMINS'), state=State.changing_ozon)
 async def send_welcome(message: types.Message, state: FSMContext):
     if message.text.lower().strip() == buttons.cancel.lower().strip():
         await message.answer(texts.instructions_change_canceled)
         await message.answer(texts.back_to_menu, reply_markup=ReplyKeyboardRemove())
     elif message.text:
-        config_io.update_key('WB_TOKEN_OOO', message.text.strip())
-        await message.answer(texts.success_instruction_change)
-        await message.answer(texts.back_to_menu, reply_markup=ReplyKeyboardRemove())
-    await state.reset_state(with_data=False)
-
-
-@dp.message_handler(lambda message: str(message.from_user.id) in config_io.get_value('ADMINS'), commands=['set_wb_ip'], state="*")
-async def send_welcome(message: types.Message):
-    await message.answer(f"Токен вб ИП: {utils.short_tail(config_io.get_value('WB_TOKEN_IP'))}")
-    await message.answer(texts.change_setting, reply_markup=kb.cancel_kb)
-    await State.changing_wb_ip.set()
-
-@dp.message_handler(lambda message: str(message.from_user.id) in config_io.get_value('ADMINS'), state=State.changing_wb_ip)
-async def send_welcome(message: types.Message, state: FSMContext):
-    if message.text.lower().strip() == buttons.cancel.lower().strip():
-        await message.answer(texts.instructions_change_canceled)
-        await message.answer(texts.back_to_menu, reply_markup=ReplyKeyboardRemove())
-    elif message.text:
-        config_io.update_key('WB_TOKEN_IP', message.text.strip())
+        config_io.update_key('OZON_TOKEN', message.text.strip())
         await message.answer(texts.success_instruction_change)
         await message.answer(texts.back_to_menu, reply_markup=ReplyKeyboardRemove())
     await state.reset_state(with_data=False)

@@ -41,7 +41,7 @@ error_kb.row(button_1)
 
 
 done_by_hand = InlineKeyboardMarkup()
-button_1 = InlineKeyboardButton(text='Уже отвечено на WB ⚠️', callback_data='warning')
+button_1 = InlineKeyboardButton(text='Уже отвечено на OZON ⚠️', callback_data='warning')
 done_by_hand.row(button_1)
 
 

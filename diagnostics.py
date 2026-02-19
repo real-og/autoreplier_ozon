@@ -1,11 +1,12 @@
 import time
 import httpx
 from openai import OpenAI
+import config_io
 
 
 PROXY_CHECK_URL = 'https://api.ipify.org?format=json'
 GPT_CHECK_URL = 'https://api.openai.com/v1/models'
-WB_CHECK_URL = 'https://feedbacks-api.wildberries.ru/api/v1/feedbacks'
+OZON_CHECK_URL = 'https://api-seller.ozon.ru/v1/review/list'
 
 
 def check_proxy(proxy: str, timeout_s: float = 10.0):
@@ -50,14 +51,19 @@ def check_openai_via_proxy(proxy: str, api_key: str, timeout_s: float = 20.0):
         http_client.close()
     
 
-def check_wb(wb_token, timeout_s: float = 10.0):
-    headers = {'Authorization': wb_token}
-    params ={'isAnswered': False,
-             'take': 100, 
-             'skip': 0}
+def check_ozon(ozon_token, timeout_s: float = 10.0):
+    client_id = config_io.get_value('CLIENT_ID')
+    headers = headers = { 'Host': 'api-seller.ozon.ru',
+                'Client-Id': client_id,
+                'Api-Key': ozon_token,
+                'Content-Type': 'application/json',}
+    body ={'status': 'UNPROCESSED',
+             'limit': 100,
+             'sort_dir': 'DESC'
+            }
     try:
         with httpx.Client(timeout=timeout_s) as c:
-            r = c.get(WB_CHECK_URL, headers=headers, params=params)
+            r = c.post(OZON_CHECK_URL, headers=headers, json=body)
         return r.is_success, r.status_code
     except httpx.HTTPError as e:
         return False, getattr(getattr(e, "response", None), "status_code", None)
