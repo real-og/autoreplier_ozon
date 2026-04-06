@@ -40,6 +40,9 @@ if __name__ == '__main__':
             response_feedbacks = ozon_api.get_feedbacks(auth)
             
             for feedback in response_feedbacks.json()['reviews']:
+
+                ozon_api.answer_feedback(auth, feedback['id'], 'Спасибо')
+
                 if not feedback['text']:
                     continue
                 
