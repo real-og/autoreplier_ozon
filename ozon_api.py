@@ -49,6 +49,33 @@ def answer_feedback(auth, id: str, text: str):
     return response.status_code
 
 
+def change_status_feedback(auth, id: str):
+    url = '/v1/review/change-status'
+    headers = { 'Host': 'api-seller.ozon.ru',
+                'Client-Id': client_id,
+                'Api-Key': auth,
+                'Content-Type': 'application/json',}
+    body ={'review_ids': [id],
+           'status': 'PROCESSED'}
+    response = requests.post(BASE_URL + url, headers=headers, json=body)
+    print(f'status changed {id}')
+    return response.status_code
+
+
+def delete_feedback(auth, id: str):
+    url = '/v1/review/comment/delete'
+    headers = { 'Host': 'api-seller.ozon.ru',
+                'Client-Id': client_id,
+                'Api-Key': auth,
+                'Content-Type': 'application/json',}
+    body ={'comment_id': id,
+}
+    response = requests.post(BASE_URL + url, headers=headers, json=body)
+    print(f'delete {id}')
+    return response.status_code
+
+
+
 def get_feedback_info(auth, id: str):
     url = '/v1/review/info'
     headers = { 'Host': 'api-seller.ozon.ru',
@@ -56,5 +83,21 @@ def get_feedback_info(auth, id: str):
                 'Api-Key': auth,
                 'Content-Type': 'application/json',}
     body ={'review_id': id,}
+    response = requests.post(BASE_URL + url, headers=headers, json=body)
+    return response
+
+
+def get_comments(auth, id: str):
+    url = '/v1/review/comment/list'
+    headers = { 'Host': 'api-seller.ozon.ru',
+                'Client-Id': client_id,
+                'Api-Key': auth,
+                'Content-Type': 'application/json',}
+    body ={
+            "limit": 100,
+            "offset": 0,
+            "review_id": id,
+            "sort_dir": "ASC"
+            }
     response = requests.post(BASE_URL + url, headers=headers, json=body)
     return response

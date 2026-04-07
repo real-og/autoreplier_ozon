@@ -42,9 +42,8 @@ if __name__ == '__main__':
             for feedback in response_feedbacks.json()['reviews']:
 
                 
-
                 if not feedback['text']:
-                    ozon_api.answer_feedback(auth, feedback['id'], 'Спасибо')
+                    ozon_api.change_status_feedback(auth, str(feedback['id']))
                     continue
                 
                 if not utils.is_fresher_than_days(feedback['published_at'], 14):
